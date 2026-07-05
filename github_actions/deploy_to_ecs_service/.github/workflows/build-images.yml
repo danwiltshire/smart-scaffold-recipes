@@ -1,16 +1,9 @@
 on:
   workflow_call:
-    outputs:
-      sha-tag:
-        description: The SHA tag of the built image
-        value: ${{ jobs.build-images.outputs.sha-tag }}
 
 jobs:
   build-images:
     runs-on: ubuntu-24.04
-
-    outputs:
-      sha-tag: ${{ steps.image.outputs.imageid }}
 
     steps:
       - name: Set up Docker Buildx
@@ -23,7 +16,6 @@ jobs:
           images: app
 
       - name: Build and push image
-        id: image
         uses: docker/build-push-action@v7
         with:
           push: false

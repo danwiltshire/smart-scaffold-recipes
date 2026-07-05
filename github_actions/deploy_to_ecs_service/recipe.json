@@ -1,0 +1,7 @@
+{
+  "$schema": "https://raw.githubusercontent.com/danwiltshire/smart-scaffold/refs/heads/main/smart_scaffold/schemas/recipe.schema.json",
+  "description": "Deploys an image hosted in ECR to an ECS Service.",
+  "name": "Deploy to ECS Service",
+  "type": "github-actions",
+  "tags": ["ecr", "ecs", "docker"]
+}

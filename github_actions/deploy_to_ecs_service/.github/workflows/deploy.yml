@@ -1,0 +1,15 @@
+on:
+  release:
+    types: [published]
+
+jobs:
+  build-images:
+    uses: ./.github/workflows/build-images.yml
+
+  deploy-to-ecs:
+    uses: ./.github/workflows/deploy-to-ecs.yml
+    needs: build-images
+    with:
+      container-name: nginx
+      task-definition-name: nginx
+      image: ${{ needs.build-images.outputs.sha-tag }}
